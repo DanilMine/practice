@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=320, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    
+   <style>
+    .center {
+          margin: 50px;
+    }
+	table {
+    width: 25%;
+    border-spacing: 1px; 
+}
+td, th {
+    padding: 10px; 
+   }
+   </style>   
+    <script src="https://unpkg.com/vue">  </script>
+    </head>
+    <body>    
+<div class="center" id="app">
+    
+
+
+ 
+<hr>
+    <br>
+    <p>Поиск по фамилии: <input v-model="search"></p>
+  
+    <div class="stud" v-for="st in studs"> 
+      
+        <table border="1">
+            <td>{{st.ID}}   </td> 
+     <td v-bind:style="st.PIB.indexOf(search)>-1 && search.length >0 ? 'background-color:#0076B5'  : 'background-color:#fff'">{{st.PIB}}   </td>
+        <td> {{st.group}} </td>
+        <td>  {{st.year}} </td>
+            <td> <input type="checkbox" v-bind:checked="st.pr"> {{st.pr}}</td>
+            <td> <a href="#" v-on:click="removeElement(st.ID)">Видалити</a></td>
+            </table>
+            
+        
+    </div>
+  
+    <br>
+<hr>
+    <br>
+</div>
+
+
+    </body>
+    <script type="text/javascript"> 
+    var studArray = [
+{
+    "ID" : "1",
+"PIB": "Budovskiy Danil",
+"group": "RPZ_18_2_9",
+"year": "2003",
+"pr": true
+},
+{
+    "ID" : "2",
+    "PIB": "Artem Kharchenko",
+"group": "RPZ_18_2_9",
+"year": "2003",
+"pr": false
+},
+{
+    "ID" : "3",
+    "PIB": "Sergey Voloshko",
+"group": "RPZ_18_2_9",
+"year": "2002",
+"pr": true
+},
+{
+    "ID" : "4",
+    "PIB": "Evgeniy Mormul",
+"group": "RPZ_18_2_9",
+"year": "2002",
+"pr": true
+},
+]
+new Vue ({
+el: '#app',
+data: {
+    studs: studArray,
+    search: ''
+    
+},
+methods: {
+  removeElement: function (ID) {
+   this.studs =  this.studs.filter(elem => elem.ID!=ID);
+   /* this.studs.splice(ID - 1, 1); */
+  }
+}
+
+})
+    
+    </script>
+</html>
