@@ -5,6 +5,7 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     entry: './main.js',
     resolve: {
+        extensions: [ '.js', '.vue' ],
         alias: {
             vue: 'vue/dist/vue.js'
         }
@@ -23,6 +24,13 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.css$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader',
+                ]
+            }
         ]
     },
     plugins: [

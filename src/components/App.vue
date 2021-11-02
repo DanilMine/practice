@@ -1,8 +1,8 @@
 <template>
-   <div class="main">
-       <h1>Students</h1>
-       <div class="content">
-           <router-view></router-view>
-       </div>
-   </div>
+    <div>
+        <h1>Students</h1>
+        <div>
+            <router-view></router-view>
+        </div>
+    </div>
 </template>
